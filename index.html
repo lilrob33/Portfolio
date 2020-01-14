@@ -1,123 +1,237 @@
 <!DOCTYPE html>
 
 <head>
-    <meta charset="utf-8">
-    <title>Pedro Suarez</title>
-    <meta name="Pedro Suarez">
-    <link rel="stylesheet" type="text/css" href="./css/portfolio.css">
+  <meta charset="utf-8">
+  <title>Pedro Suarez</title>
+  <meta name="Pedro Suarez">
+  <link rel="stylesheet" type="text/css" href="./css/portfolio.css">
+  <script src="./js/portfolio.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
 
 <body class="Background">
 
+  <script>
+    document.body.className += ' fade-out';
+    $(function () {
+      $('body').removeClass('fade-out');
+    }
+    );
+
+  </script>
+
   <!-- Navbar -->
-	<div class="navbar">
-		<a class="active" href="#home">Home</a> 
-		<a href="#about">About</a>
-		<a href="#github">GitHub</a>
-		<a href="#contact">Contact</a>
+  <div class="navbar">
+    <a class="active" href="#home">Home</a>
+    <a href="#about" onclick="ready()">About</a>
+    <a href="#slideShow">Slideshow</a>
+    <a href="#github">GitHub</a>
+    <a onclick="openForm()" href="#contact">Contact</a>
   </div>
   <!-- End Navbar -->
 
+  <div class="btn cancel" onclick="closeForm()">
     <br>
     <br>
 
-<!-- Top of page video -->
-<div id="Home">
-  <video autoplay muted loop id="Matrix_letter_rain"> 
-    <source src="./video/code.mov" type="video/mp4">
-    Your browser does not support HTML5 video. 
-  </video>
-</div>
-  
-<div class="Video_overlay_text"> 
-  <h1 style="color:white;">Pedro's Portfolio</h1>
-    <p> 
-      <strong>
-        <center>
-          <q>Any fool can write code a computer can understand.
-          <br>Good programmers write code humans can understand.</q>
-          <br>-Martin Fowler<br>
-          <br>
-          <q>Experience is the name everyone gives to their mistakes</q>
-          <br>-Oscar Wilde<br>
-          <br>
-          My name is Pedro Suarez, and this is my portfolio website. <br>
-          On it, I will tell you a little about me and my experience.<br> 
-        </center>	
-      </strong>
-    </p> 
-</div>
+    <!-- Top of page video -->
+    <div id="home">
+      <video autoplay muted loop id="Matrix_letter_rain">
+        <source src="./video/code.mov" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+    </div>
 
-<!-- About Left column -->
-<div class="Row" id="about"> 
-  <div class="Column_2">
-    <img src="./img/html_code.jpg" alt="Knuth flowchart">
+    <div class="Video_overlay_text">
+      <h1 style="color:white;">Pedro's Portfolio</h1>
+      <p>
+        <strong>
+          <center>
+            <q>Any fool can write code a computer can understand.
+              <br>Good programmers write code humans can understand.</q>
+            <br>-Martin Fowler<br>
+            <br>
+            <q>Experience is the name everyone gives to their mistakes</q>
+            <br>-Oscar Wilde<br>
+            <br>
+            My name is Pedro Suarez, and this is my portfolio website. <br>
+            On it, I will tell you a little about me and my experience.<br>
+          </center>
+        </strong>
+      </p>
+    </div>
+
+    <!-- Slideshow -->
+    <div id="slideShow">
+      <div id="Slideshow_Background">
+        <div id="Slideshow_Container">
+
+          <div class="mySlides fade">
+            <div class="Slide_Number">1 / 6</div>
+            <img class="Slide_Show_Images" src="./img/me.jpg" style="width:100%">
+            <div class="text">I am more than ready to assist you in your next project. Contact me below!</div>
+          </div>
+
+          <div class="mySlides fade">
+            <div class="Slide_Number">2 / 6</div>
+            <img class="Slide_Show_Images" src="./img/full-stack.jpg" style="width:75%">
+            <div class="text">I am a full-stack software developer,<br> trained in:<br>HTML, CSS, JavaScript,
+              <br>SQL, Python, C#, and more...</div>
+          </div>
+
+          <div class="mySlides fade">
+            <div class="Slide_Number">3 / 6</div>
+            <img class="Slide_Show_Images" src="./img/jquery.jpeg" style="width:75%">
+            <div class="text">JQuery</div>
+          </div>
+
+          <div class="mySlides fade">
+            <div class="Slide_Number">4 / 6</div>
+            <img class="Slide_Show_Images" src="./img/winning.jpg" style="width:75%">
+            <div class="text">Feeling it</div>
+          </div>
+
+          <div class="mySlides fade">
+            <div class="Slide_Number">5 / 6</div>
+            <img class="Slide_Show_Images" src="./img/man_smashing_laptop.jpg" style="width:75%">
+            <div class="text">This is what happens after you spend hours getting a program to work...<br>
+              Only to find out it was a missing semicolon the whole time....</div>
+          </div>
+
+          <div class="mySlides fade">
+            <div class="Slide_Number">6 / 6</div>
+            <img class="Slide_Show_Images" src="./img/funny.jpeg" style="width:75%">
+            <div class="text">
+              <a onclick="openForm()" href="#Contact" style="color:white;">The lighter side of things.</a>
+            </div>
+          </div>
+
+          <a class="Previous" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="Next" onclick="plusSlides(1)">&#10095;</a>
+
+        </div>
+        <br>
+
+        <div style="text-align:center">
+
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+          <span class="dot" onclick="currentSlide(4)"></span>
+          <span class="dot" onclick="currentSlide(5)"></span>
+          <span class="dot" onclick="currentSlide(6)"></span>
+
+        </div>
+      </div>
+    </div>
+    <!-- End slideshow-->
+
+    <!-- script for slides -->
+    <script>
+      var slideIndex = 1;
+      showSlides(slideIndex);
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+      }
+      function currentSlide(n) {
+        showSlides(slideIndex = n);
+      }
+      function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+      }
+    </script>
+    <!-- End script for slides -->
+
+    <!-- About Left column -->
+    <div class="Row" id="about">
+      <div class="Column_2">
+        <img src="./img/html_code.jpg" alt="Computer code">
+      </div>
+
+      <!-- Right column Info -->
+      <div class="Column_1">
+        <h1>About</h2>
+          <p>I am a software developer who loves to code! As a father of four,
+            I am a natural problem solver.
+            <br><br>I am a graduate of <a href="https://www.learncodinganywhere.com" target="_blank">The Tech
+              Academy</a>’s
+            Software Developer Boot Camp.<br><br>I am a full-stack developer and would
+            love to work with you on your project or help create something new.
+            <a href="#Contact">Contact</a> me below!</p>
+      </div>
+    </div>
+    <!-- End about -->
+
+
+    <!-- GitHub Left column -->
+    <div class="Row" id="github">
+      <div class="Column_1">
+        <h1 class="git">GitHub</h1>
+        <p class="git">You can view my coding projects on my GitHub:<br>
+          <center><a class="git" href="https://github.com/lilrob33" target="_blank">Pedro Suarez GitHub</a></center>
+        </p class="git">
+        <br>
+        <img class="logo" src="./img/github.png" alt="GitHub Logo">
+      </div>
+
+      <!-- Right column -->
+
+      <div class="Column_2">
+        <img src="./img/computer.jpeg" alt="Laptop">
+      </div>
+    </div>
+    <!-- End github -->
   </div>
 
-<!-- Right column -->
-  <div class="Column_1"> 
-    <h1>About</h2>
-      <p>I am a software developer who loves to code! As a father of four, 
-        I am a natural problem solver. 
-        <br><br>I am a graduate of <a href="https://www.learncodinganywhere.com"
-         target="_blank">The Tech Academy</a>’s 
-        Software Developer Boot Camp.<br><br>I am a full-stack developer and would
-         love to work with you on your project or help create something new. 
-        <a href="#Contact">Contact</a> me below!</p>
-  </div>
-</div>
-<!-- End about -->
-
-<!-- GitHub Left column -->
-<div class="Row" id="github"> 
-  <div class="Column_1">
-    <h1 class="git">GitHub</h1>
-    <p class="git">You can view my coding projects on my GitHub:<br>
-    <center><a class="git" href="https://github.com/lilrob33" 
-      target="_blank">Pedro Suarez GitHub</a></center></p class="git">
-      <br>
-      <img class="logo" src="./img/github.png" alt="GitHub Logo">
-  </div>
-  
-  <!-- Right column -->
-
-  <div class="Column_2"> 
-    <img src="./img/computer.jpeg" alt="Laptop">
-  </div>
-</div>
-<!-- End github -->
-
-<!-- Contact -->
-<div class="Row">
-  <div class="Column_3"> 
-    <h1>Programming Languages</h1>
-      <p>HTML5-CSS<img class="icon" src="./icon/html-css.png"></p>
+  <!-- Icons -->
+  <div class="Row">
+    <div class="Column_3">
+      <h1>Programming Languages</h1>
+      <p>HTML5-CSS3<img class="icon" src="./icon/html-css.png"></p>
       <p>JavaScript<img class="icon" src="./icon/js.png"></p>
       <p>Python<img class="icon" src="./icon/python.png"></p>
       <p>SQL<img class="icon" src="./icon/sql.jpg"></p>
       <p>C#<img class="icon" src="./icon/c.jpeg"></p>
       <p>And More...</p>
-  </div>
+    </div>
+    <!-- End Icons -->
 
-  <div class="Column_1" id="contact">
-    <h1>Contact</h2> 
-      <form action="" method="get" enctype="text/plain">
-        <label>Name:</label>
-          <input type="text" placeholder="Name">
-        <label>Email:</label>
-          <input type="text" id="Email" name="Email" placeholder="Email address">
-        <label>Message:</label>
-          <input type="text" id="Message" name="Message" placeholder="Message">
-          <input type="submit" value="Submit">
-      </form>
-  </div>
-</div>
-<!-- End contact -->
+    <!-- Contact -->
+    <div class="Column_1" id="contact">
+      <button onclick="openForm()" class="Pop_Up_Button"> CONTACT </button>
+      <div class="form-popup" id="myForm">
+        <form action="https://formspree.io/xyyeelrg" method="POST" class="form-container">
+          <h1>Contact</h1>
+          <form action="" method="get" enctype="text/plain">
+            <label>Name:</label>
+            <input type="text" placeholder="Name">
+            <label>Email:</label>
+            <input type="text" id="Email" name="Email" placeholder="Email address">
+            <label>Message:</label>
+            <input type="text" id="Message" name="Message" placeholder="Message">
+            <input type="submit" class="btn" value="SUBMIT">
+            <button type="button" class="btn cancel" onclick="closeForm()">CLOSE</button>
+          </form>
+      </div>
+    </div>
+    <!-- End contact -->
 
-<!-- Footer -->
-<footer>
-  <p>Feel free to email me at: <a href="mailto:psuarez12@live.com">
-  psuarez12@live.com</a>.</p>
-</footer>
+    <!-- Footer -->
+    <footer>
+      <p>Feel free to email me at: <a href="mailto:psuarez12@live.com">
+          psuarez12@live.com</a>.</p>
+    </footer>
 
-</html>
+    </html>

@@ -1,17 +1,28 @@
-/* Body */
+/* scroll for the page */
+html {
+	scroll-behavior: smooth;
+  }
+
+  /* Body */
 body {
 	margin: 0%;
+	opacity: 1;
+    transition: 3s opacity;
+	letter-spacing: .2vw;
+	font-family: Avant Garde, Helvetica; 
+	font-size: 1.5vw;
 }
 
 /* Navbar */
 .navbar {
-
 	overflow: hidden;
 	background-color: royalblue;
 	position: fixed; 
 	top: 0;
 	width: 100%;
 	z-index: 1;
+	-webkit-animation: moveNav 5s;
+    animation: moveNav 5s;
 }
 
 /* Navbar text */
@@ -24,15 +35,42 @@ body {
 	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 	font-size: 20px;
 	text-align: center;
+	position: relative;
+	-webkit-animation: movenavText 5.75s;
+    animation: movenavText 5.75s;
+	letter-spacing: .2vw;
 }
+
+/* Navbar animation */
+@keyframes moveNav {
+	from {left: -100vw;}
+	to {left: 0vw;}
+  }
+  
+  @keyframes movenavText {
+	from {top: -100vw;}
+	to {top: 0vw;}
+  }
+  
+  @keyframes movevideoText {
+	from {top: -100vw;}
+	to {top: 0px;}
+  }
 
 /* Navbar hover effect */
 .navbar a:hover {
 	background-color: #4d4d4d;
 	color: black;
 	font-weight: bold;
+	-webkit-transition-duration: 1s; 
+  transition-duration: 1s;
 }
 
+/* Navbar home button */
+.Navbar a.active {
+	background-color: darkgray;
+  }
+  
 /* Video */
 #Matrix_letter_rain {
 	position: fixed;
@@ -49,8 +87,110 @@ body {
 	width: 100%;
 	padding: 20px;
 	margin-top: 23%;
+	-webkit-animation: moveNav 4s;
+    animation: movevideoText 4s;
 }
 
+/* Slideshow section / container */
+#Slideshow_Container {
+	width: 65%;
+	height: auto;
+	padding-top: 4%;
+	position: relative;
+	margin: auto;
+  }
+  
+  /* Images contained within slideshow */
+  .Slide_Show_Images {
+	vertical-align: middle;
+	height: 375px;
+	box-shadow: 0px 5px 10px 12px rgba(0, 0, 0, .75);
+	width: auto;
+	margin-bottom: 30px;
+  }
+  
+  /* Next and previous buttons */
+  .Previous, .Next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	padding: 2vw;
+	margin-top: -0vw;
+	color: darkgray;
+	font-weight: bold;
+	font-size: 1.5vw;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+	transition: 0.6s ease;
+  }
+  
+  /* Positioning the right-hand next button */
+  .Next {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+  }
+  
+  /* Hover effect on slide show buttons */
+  .Previous:hover, .Next:hover {
+	background-color: rgba(0,0,0,0.8);
+	color: white;
+  }
+
+  /* Slideshow text */
+  .text {
+	color: white;
+	padding: 1vw;
+	position: absolute;
+	bottom: -35px;
+	width: 100%;
+	text-align: center;
+	font-family: Perpetua, Rockwell Extra Bold;
+	letter-spacing: .1vw; 
+	font-size: 1.5vw;
+	background-color: rgba(0,0,0,0.75);
+	font-weight: bold;
+	border-radius: 7px 7px 7px 7px;
+  }
+  
+  /* Number text */
+  .Slide_Number {
+	color: white;
+	position: absolute;
+	top: 0;
+	font-family: Perpetua, Rockwell Extra Bold;
+	letter-spacing: .1vw; 
+	font-size: 1.5vw;
+	font-weight: bold;
+	display: none;
+	}
+  
+  /* The dots under the slideshow */
+  .dot {
+	cursor: pointer;
+	height: 1vw;
+	width: 1vw;
+	margin: .25vw;
+	background-color: white;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+	position: relative;
+	z-index: 1;
+  }
+  
+  /* Hover effect for slideshow dots */ 
+  .active, .dot:hover {
+	background-color: black;
+  }
+  
+  /* Fading animation for slideshow */
+  .fade {
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 1.5s;
+	animation-name: fade;
+	animation-duration: 1.5s;  
+  }
 
 * { 
 	box-sizing: border-box;
@@ -225,6 +365,104 @@ img:hover {
     transition: transform 1s;
 	transform: scale(1.1);
 }
+
+@keyframes movePopup {
+	from {right: -40vw;}
+	to {bottom: 6.5vw;}
+  }
+  
+  /* Button used to open the contact form */
+  .Pop_Up_Button {
+	bottom: 6.5vw;
+	font-size: 16px;
+	right: 5.75vw;
+	width: 20vw; 
+	height: 5vw; 
+	background-color: white;
+	color: black;
+	border: solid;
+	cursor: pointer;
+	position: fixed;
+	-webkit-animation: movePopup 5s;
+	animation: movePopup 5s;
+  }
+  
+  /* The popup form - hidden by default */
+  .form-popup {
+	border: 3px solid #f0f1f0;
+	z-index: 8;
+	display: none;
+	position: fixed;
+	bottom: 30px;
+	right: 6px;
+  }
+
+  /* Form styling */
+.form-container {
+	max-width: 49vw;
+	padding: 9px;
+	background-color: white;
+  }
+
+  /* Input fields */
+.form-container input[type=text], .form-container input[type=password] {
+	width: 100%;
+	padding: .93vw;
+	margin: .6vw 0 .6vw 0;
+	border: none;
+	background: Gainsboro;
+	font-family: Helvetica, Avant Garde;
+	font-size: 1vw; 
+  }
+
+  /* Submit button */
+.form-container .btn {
+	background-color: white;
+	color: black;
+	border-color: black;
+	margin-bottom:1vh;
+  }
+  
+  /* Close button */
+  .form-container .cancel {
+	background-color: black;
+	color: white;
+	border-color: gray;
+	margin-left: auto;
+	margin-right: auto; 
+	border-radius: 4px;
+  }
+
+  /* Button styling */
+button {
+	font-family: "Trebuchet MS", Optima; 
+	letter-spacing: .3vw; 
+	font-size: 1.0vw;
+	font-weight: bold;
+	padding: 1.5vw 1.5vw;
+	border-style: solid;
+	cursor: pointer;
+	width: 20%;
+	height: auto;
+  }
+  
+  /* Hover effect for buttons */
+  button:hover, .form-container .btn:hover{
+	color: white;
+	background-color: black;
+	-webkit-transition-duration: 1s; 
+	transition-duration: 1s;
+	border-style: solid;
+	border-color: silver;
+  }
+  .form-container .cancel:hover{
+	color: white;
+	background-color: darkred;
+	-webkit-transition-duration: 1s; 
+	transition-duration: 1s;
+	border-style: solid;
+	border-color: black;
+  }
 
 /* Footer element */
 footer {
